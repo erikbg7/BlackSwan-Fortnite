@@ -13,23 +13,33 @@ export class PlayerStatsComponent implements OnInit {
   constructor(private statsService: PlayerStatsService, private router: Router) { }
 
   items: Item[];
+  dailyItems: Item[];
+  weeklyItems: Item[];
 
 
 
   ngOnInit() {
-    this.getStore();
+    this.getStore2();
   }
 
 
 
-  getStore() {
+
+
+
+  getStore2() {
     this.statsService.getStore()
-      .subscribe(
-        res => {
-          this.items = res;
+      .subscribe((res: Item[]) => {
+        this.items = res;
+        this.dailyItems = this.items.filter(item => item.storeCategory === 'BRDailyStorefront');
+        this.weeklyItems = this.items.filter(item => item.storeCategory === 'BRWeeklyStorefront')
+
+        const d = [...this.items];
+        console.log(this.dailyItems[0].name);
+        console.log(d[0]);
         }
       );
-
   }
+
 
 }

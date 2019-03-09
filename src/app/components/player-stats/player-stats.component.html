@@ -1,10 +1,24 @@
 <h1>
-  <P id="borderimg">  Daily items!</P>
-
+  <P class="borderimg">  Daily items!</P>
 </h1>
-<div id="wrapper">
-  <div id="box-item" *ngFor="let item of items">
-    <div id="box-content" [ngStyle]="{'background-image': 'url('+item.imageUrl+')'}">
+<div class="wrapper">
+  <div class="box-item" *ngFor="let item of dailyItems">
+    <div class="box-content" [ngStyle]="{'background-image': 'url('+item.imageUrl+')'}">
+      <span>
+        <p>{{item.name}}</p>
+        <span></span>
+      </span>
+
+    </div>
+  </div>
+</div>
+
+<h1>
+  <P class="borderimg">  Weekly items!</P>
+</h1>
+<div class="wrapper">
+  <div class="box-item" *ngFor="let item of weeklyItems">
+    <div class="box-content" [ngStyle]="{'background-image': 'url('+item.imageUrl+')'}">
       <span>
         <p>{{item.name}}</p>
         <span></span>
