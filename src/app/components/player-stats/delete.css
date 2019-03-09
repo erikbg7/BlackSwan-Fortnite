@@ -1,0 +1,30 @@
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#borderimg {
+  border: 5px solid transparent;
+  padding: 5px;
+  background-image: radial-gradient(#3dc7ff 0%,#0059a1 100%);
+  border-image-source: linear-gradient(25deg,#0063c5 15%,#00efec);
+  border-image-slice: 30;
+}
+
+#box-item {
+  border: 5px solid transparent;
+  padding: 5px;
+  background-image: radial-gradient(#3dc7ff 0%,#0059a1 100%);
+  border-image-source: linear-gradient(25deg,#0063c5 15%,#00efec);
+  border-image-slice: 30;
+  margin: 5px 5px 5px 5px;
+}
+
+#box-content {
+
+  height: 175px;
+  width: 175px;
+  background-size: cover;
+}
+
+

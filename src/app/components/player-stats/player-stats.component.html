@@ -1,0 +1,15 @@
+<h1>
+  <P id="borderimg">  Daily items!</P>
+
+</h1>
+<div id="wrapper">
+  <div id="box-item" *ngFor="let item of items">
+    <div id="box-content" [ngStyle]="{'background-image': 'url('+item.imageUrl+')'}">
+      <span>
+        <p>{{item.name}}</p>
+        <span></span>
+      </span>
+
+    </div>
+  </div>
+</div>
