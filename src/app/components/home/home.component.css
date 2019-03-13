@@ -1,0 +1,30 @@
+.borderimg {
+  border: 5px solid transparent;
+  padding: 5px;
+  background-image: radial-gradient(#3dc7ff 0%,#0059a1 100%);
+  border-image-source: linear-gradient(25deg,#0063c5 15%,#00efec);
+  border-image-slice: 30;
+}
+
+.store-title {
+  background: #DA81F5;
+  margin-bottom: 10px;
+  display: flex;
+  align-content: space-between;
+  font-family: 'Luckiest Guy', cursive;
+  border-radius: 5px;
+  padding: 0 0 0 0;
+  border-color: #BE81F7;
+}
+
+h2 {
+  margin: 5px 0 5px 15px;
+}
+
+.polygon {
+  background: #9A2EFE;
+  clip-path: polygon(100% 0%,100% 100%,54% 40%,56% 67.5%,0% 0%);
+  align-self: stretch;
+  padding-left: 500px;
+  border-radius: 5px;
+}

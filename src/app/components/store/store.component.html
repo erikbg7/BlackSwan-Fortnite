@@ -1,0 +1,52 @@
+<div class="store-container">
+
+
+  <div class="store-title">
+    <h2>Daily items</h2>
+    <span class="polygon"></span>
+  </div>
+  <div class="wrapper">
+    <div class="wrapper-element" *ngFor="let item of dailyItems">
+      <div class="box-item" [ngStyle]="defineStyle(item.rarity)" >
+        <div class="box-content" [ngStyle]="{'background-image': 'url('+item.imageUrl+')'}">
+          <div class="box-content-footer">
+            <div class="box-content-footer-name">{{item.name}}</div>
+            <div class="box-content-footer-vbucks">
+              <img style="vertical-align:middle" src="assets/vBuck.png" width="10%" height="10%">
+              <span style=""> {{item.vBucks}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="store-title">
+    <h2>Weekly items</h2>
+    <span class="polygon"></span>
+  </div>
+  <div class="wrapper">
+    <div class="wrapper-element" *ngFor="let item of weeklyItems">
+      <div class="box-item" [ngStyle]="defineStyle(item.rarity)" >
+        <div class="box-content" [ngStyle]="{'background-image': 'url('+item.imageUrl+')'}">
+          <div class="box-content-footer">
+            <div class="box-content-footer-name">{{item.name}}</div>
+            <div class="box-content-footer-vbucks">
+              <img style="vertical-align:middle" src="assets/vBuck.png" width="10%" height="10%">
+              <span style=""> {{item.vBucks}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+

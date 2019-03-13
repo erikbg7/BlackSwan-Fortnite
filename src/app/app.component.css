@@ -1,3 +1,33 @@
 .jumbotron {
   background-color: #424242;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.col-sm-6 {
+  display: contents;
+}
+
+.offset-sm-3 {
+
+
+}
+
+.page-footer {
+  display: block;
+}
+
+.mb-5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+
+}
+
+

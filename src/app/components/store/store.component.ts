@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerStatsService } from '../../services/player-stats.service';
+import { StoreService } from '../../services/store/store.service';
+import {Router} from '@angular/router';
 import {Item} from '../../models/item';
-import {Route, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-player-stats',
-  templateUrl: './player-stats.component.html',
-  styleUrls: ['./player-stats.component.css']
+  selector: 'app-store',
+  templateUrl: './store.component.html',
+  styleUrls: ['./store.component.css']
 })
-export class PlayerStatsComponent implements OnInit {
+export class StoreComponent implements OnInit {
 
-  constructor(private statsService: PlayerStatsService, private router: Router) { }
+  constructor(private storeService: StoreService, private router: Router) { }
 
   items: Item[];
   dailyItems: Item[];
@@ -21,7 +21,7 @@ export class PlayerStatsComponent implements OnInit {
   }
 
   getStore() {
-    this.statsService.getStore()
+    this.storeService.getStore()
       .subscribe((res: Item[]) => {
           this.items = res;
           this.dailyItems = this.items.filter(item => item.storeCategory === 'BRDailyStorefront');
@@ -35,7 +35,7 @@ export class PlayerStatsComponent implements OnInit {
     switch (option) {
       case 'Handmade':
         return {'background-image': 'radial-gradient(#5bad03 0%,#01700a 100%)',
-        'border-image-source': 'linear-gradient(25deg,#008a09 15%,#9eef00)'};
+          'border-image-source': 'linear-gradient(25deg,#008a09 15%,#9eef00)'};
       case 'Sturdy':
         return {'background-image': 'radial-gradient(#3dc7ff 0%,#0059a1 100%)',
           'border-image-source': 'linear-gradient(25deg,#0063c5 15%,#00efec)'};
@@ -47,7 +47,5 @@ export class PlayerStatsComponent implements OnInit {
           'border-image-source': 'linear-gradient(25deg,#df7241 15%,#f6c87c)'};
     }
   }
-
-
 
 }

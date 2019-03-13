@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PlayerStatsComponent } from './components/player-stats/player-stats.component';
 import {StoreComponent} from './components/store/store.component';
+import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/api/store', pathMatch: 'full' },
+  { path: '', redirectTo: '/api/home', pathMatch: 'full' },
+  { path: 'api/home', component: HomeComponent },
   { path: 'api/store', component: StoreComponent }
 ];
 
