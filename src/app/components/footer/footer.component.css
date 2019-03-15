@@ -1,0 +1,15 @@
+.page-footer {
+  display: block;
+  padding-top: 20px;
+  bottom: 0;
+}
+
+.mb-5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+
+}
+
+

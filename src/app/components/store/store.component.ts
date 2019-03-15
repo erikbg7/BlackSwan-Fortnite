@@ -15,6 +15,7 @@ export class StoreComponent implements OnInit {
   items: Item[];
   dailyItems: Item[];
   weeklyItems: Item[];
+  renderStore = false;
 
   ngOnInit() {
     this.getStore();
@@ -26,6 +27,7 @@ export class StoreComponent implements OnInit {
           this.items = res;
           this.dailyItems = this.items.filter(item => item.storeCategory === 'BRDailyStorefront');
           this.weeklyItems = this.items.filter(item => item.storeCategory === 'BRWeeklyStorefront');
+          this.renderStore = true;
         }
       );
   }
