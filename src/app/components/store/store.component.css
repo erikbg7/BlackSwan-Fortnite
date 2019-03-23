@@ -21,9 +21,6 @@ h2 {
   border-radius: 5px;
   width: max-content;
   margin-left: auto;
-
-
-
 }
 
 .wrapper {
@@ -32,17 +29,9 @@ h2 {
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  background-color: #585858;
+  background-color: #424242;
   border-radius: 5px;
   padding: 10px 0 10px 0;
-}
-
-.borderimg {
-  border: 5px solid transparent;
-  padding: 5px;
-  background-image: radial-gradient(#3dc7ff 0%,#0059a1 100%);
-  border-image-source: linear-gradient(25deg,#0063c5 15%,#00efec);
-  border-image-slice: 30;
 }
 
 .box-item {
@@ -80,3 +69,8 @@ h2 {
   padding-bottom: 4px;
   padding-top: 4px;
 }
+
+
+
+
+
