@@ -3,19 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreComponent } from './components/store/store.component';
+import { StoreComponent } from './components/fortnite/store/store.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {InterceptorService} from './services/interceptor.service';
-import { HomeComponent } from './components/home/home.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { LoginComponent } from './components/login/login.component';
-import { ManagerComponent } from './components/manager/manager.component';
-import { ChallengesComponent } from './components/challenges/challenges.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/view/home/home.component';
+import { FooterComponent } from './components/view/footer/footer.component';
+import { LoginComponent } from './components/management/login/login.component';
+import { ChallengesComponent } from './components/fortnite/challenges/challenges.component';
+import { NavbarComponent } from './components/view/navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
-
+import { RegisterComponent } from './components/management/register/register.component';
+import { ManagerComponent } from './components/management/manager/manager.component';
+// search module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TestComponent } from './components/test/test.component';
+import { AccountComponent } from './components/management/account/account.component';
+import {TComponent} from './components/fortnite/test/test.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +28,13 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     HomeComponent,
     FooterComponent,
     LoginComponent,
-    ManagerComponent,
     ChallengesComponent,
     NavbarComponent,
+    RegisterComponent,
+    ManagerComponent,
+    TestComponent,
+    AccountComponent,
+    TComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    Ng2SearchPipeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]

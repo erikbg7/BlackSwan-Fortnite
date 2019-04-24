@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Environment } from '../environment';
+import {Environment} from '../environment';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StoreService {
-
+export class ImagesService {
 
   environment: Environment;
 
@@ -14,7 +13,7 @@ export class StoreService {
     this.environment = new Environment();
   }
 
-  getStore() {
+  accountGuardian() {
     return this.http.get(this.environment.urlStore);
   }
 

@@ -1,0 +1,55 @@
+.home-wrapper {
+  overflow: visible;
+  position: relative;
+}
+
+
+.home-background {
+  height: 100px;
+}
+
+span {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+img {
+  margin:0 -8.885%;
+  width: 20%;
+}
+
+
+.one {
+
+
+}
+
+
+
+
+
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  background-color: #424242;
+  border-radius: 5px;
+  border: solid;
+  padding: 10px 0 10px 0;
+}
+
+.box-item {
+  position: relative;
+  border: 5px solid transparent;
+  border-image-slice: 30;
+  margin: 5px 5px 5px 5px;
+}
+
+
+
+
+
+

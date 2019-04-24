@@ -1,0 +1,28 @@
+<div class="store-container" *ngIf="renderChallenges === true">
+
+  <div class="challenges-title">
+    <h2>SEASON 8 challenges</h2>
+    <span class="polygon"></span>
+  </div>
+  <br>
+
+
+  <div class="weeks-container" *ngFor="let week of weeks; let i = index">
+    <div class="challenges-container">
+      <h1>Week {{i + 1}} </h1>
+      <span *ngFor="let ch of week" >
+      <br># {{ch.challenge}}
+    </span>
+      <div class="divider dropdown-divider"></div>
+      <br>
+      <br>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+

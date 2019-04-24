@@ -1,0 +1,53 @@
+<div class="container text-center manager" (click)="usersContainerTrigger()">
+  <h1><b>{{title}}</b></h1>
+</div>
+<div class="container" *ngIf="usersContainer === true">
+  <div class="row">
+    <div class="search-hero">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users | filter: searchText">
+        <td>{{user._id}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.displayName}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="confirmDelete(product._id, i)">
+            <i class="fa fa-trash" aria-hidden="true"></i></button>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!--
+
+<h2 class="manager-title"  > Users </h2>
+
+<div *ngFor = "let user of users; let i=index">
+  <input type="hidden" value="{{user.id}}">
+  <div class="border border-secondary">
+    <h2>{{user.email}}</h2>
+    <p><b>Name:</b> {{user.displayName}}</p>
+
+    <button class="btn btn-danger" (click)="confirmDelete(user.id, i)">
+      <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
+  </div>
+</div>
+
+-->
+
+
+
