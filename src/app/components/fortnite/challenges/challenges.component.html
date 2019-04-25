@@ -1,4 +1,4 @@
-<div class="store-container" *ngIf="renderChallenges === true">
+
 
   <div class="challenges-title">
     <h2>SEASON 8 challenges</h2>
@@ -6,8 +6,27 @@
   </div>
   <br>
 
+<div class="store-container" *ngIf="renderComponents === true">
+
 
   <div class="weeks-container" *ngFor="let week of weeks; let i = index">
+    <div class="challenges-container">
+      <button type="button" class="btn btn-secondary week-btn" (click)="toogleChallenges()">Week {{i + 1}}</button>
+      <span *ngIf="renderChallenges === true">
+        <span *ngFor="let ch of week" >
+          <br># {{ch.challenge}}
+        </span>
+        <br>
+        <br>
+      </span>
+    </div>
+  </div>
+
+
+
+
+
+  <!--div class="weeks-container" *ngFor="let week of weeks; let i = index">
     <div class="challenges-container">
       <h1>Week {{i + 1}} </h1>
       <span *ngFor="let ch of week" >
@@ -17,7 +36,7 @@
       <br>
       <br>
     </div>
-  </div>
+  </div-->
 
 </div>
 

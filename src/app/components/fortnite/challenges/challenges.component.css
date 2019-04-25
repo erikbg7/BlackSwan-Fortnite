@@ -1,7 +1,7 @@
 .challenges-title {
   width: 100%;
   background: #f1ed62;
-  margin: 30px 0 30px 0;
+  margin: 30px 0 20px 0;
   display: flex;
   flex-direction: row;
   align-content: space-between;
@@ -12,6 +12,17 @@
 
 .weeks-container .challenges-container {
   color: #fff;
+}
+
+.week-btn {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 60%;
+  font-weight: bold;
+  font-size: large;
+  background-image: linear-gradient(#4B088A, #aa66cc);
+  border: solid 1px #BE81F7;
 }
 
 h1 {

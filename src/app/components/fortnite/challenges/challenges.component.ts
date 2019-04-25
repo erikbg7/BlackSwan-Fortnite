@@ -16,6 +16,7 @@ export class ChallengesComponent implements OnInit {
 
   constructor(private storeService: StoreService, private router: Router) { }
 
+  renderComponents = false;
   renderChallenges = false;
   weeks: Week[];
 
@@ -29,7 +30,7 @@ export class ChallengesComponent implements OnInit {
       .subscribe((res: object) => {
         this.weeks = Object.values(res['challenges']);
         console.log(this.weeks);
-        this.renderChallenges = true;
+        this.renderComponents = true;
 
         //  this.weeks = res.challenges;
         // console.log(this.weeks['week1']);
@@ -40,6 +41,9 @@ export class ChallengesComponent implements OnInit {
       );
   }
 
+  toogleChallenges() {
+    this.renderChallenges = !this.renderChallenges;
+}
 
 
 }
