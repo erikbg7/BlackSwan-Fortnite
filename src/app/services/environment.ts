@@ -7,7 +7,7 @@ export class Environment {
 
   urlUsers = 'http://localhost:3001/api/users';
 
-
+  urlChallenges = 'https://fortnite-public-api.theapinetwork.com/prod09/challenges/get?season=current';
 
 
 

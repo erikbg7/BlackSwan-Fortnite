@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Item} from '../../../models/item';
 import {Challenge} from '../../../models/challenge/challenge';
 import {Week} from '../../../models/week/week';
+import {FortniteApiService} from '../../../services/fortnite-api/fortnite-api.service';
 
 
 
@@ -14,7 +15,7 @@ import {Week} from '../../../models/week/week';
 })
 export class ChallengesComponent implements OnInit {
 
-  constructor(private storeService: StoreService, private router: Router) { }
+  constructor(private fortniteService: FortniteApiService, private router: Router) { }
 
   renderComponents = false;
   renderChallenges = false;
@@ -27,7 +28,7 @@ export class ChallengesComponent implements OnInit {
   }
 
   getCH() {
-    this.storeService.getChallenges()
+    this.fortniteService.getChallenges()
       .subscribe((res: object) => {
         this.weeks = Object.values(res['challenges']);
         console.log(this.weeks);

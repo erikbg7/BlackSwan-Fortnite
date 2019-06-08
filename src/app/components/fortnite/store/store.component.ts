@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../../services/store/store.service';
 import {Router} from '@angular/router';
 import {Item} from '../../../models/item';
+import {FortniteApiService} from '../../../services/fortnite-api/fortnite-api.service';
 
 @Component({
   selector: 'app-store',
@@ -10,7 +11,7 @@ import {Item} from '../../../models/item';
 })
 export class StoreComponent implements OnInit {
 
-  constructor(private storeService: StoreService, private router: Router) { }
+  constructor(private fortniteService: FortniteApiService, private router: Router) { }
 
   items: Item[];
   dailyItems: Item[];
@@ -156,7 +157,7 @@ export class StoreComponent implements OnInit {
 
 
   getStore() {
-    this.storeService.getStore()
+    this.fortniteService.getStore()
       .subscribe((res: Item[]) => {
           this.items = res;
           this.dailyItems = this.items.filter(item => item.storeCategory === 'BRDailyStorefront');

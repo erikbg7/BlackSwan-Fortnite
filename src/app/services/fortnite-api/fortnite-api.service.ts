@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Environment} from '../environment';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Environment } from '../environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ImagesService {
+export class FortniteApiService {
 
   environment: Environment;
 
@@ -13,12 +13,16 @@ export class ImagesService {
     this.environment = new Environment();
   }
 
-  accountGuardian() {
+  getStore() {
     return this.http.get(this.environment.urlStore);
   }
 
   getChallenges() {
-    return this.http.get(this.environment.urlBase);
+    return this.http.get(this.environment.urlChallenges);
   }
+
+  getEpicId(username: string) {}
+
+  getStatistics(epicId: string) {}
 
 }
