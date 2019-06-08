@@ -37,13 +37,13 @@ export class LoginComponent implements OnInit {
         { type: 'required',
           message: 'Email is required' },
         { type: 'pattern',
-          message: 'Email must be valid. Must contain a @ and only one dot in the domain. Domain between 2 and 3 characters long' }
+          message: 'Invalid email: It must contain a @ and a valid domain.' }
       ],
       password: [
         { type: 'required',
           message: 'Password is required' },
         { type: 'pattern',
-          message: 'Password must be valid. Must contain at least one number and must be between 4 and 8 characters' }
+          message: 'Invalid password: Must contain at least one number and must be between 4 and 8 characters' }
       ]
     };
   }

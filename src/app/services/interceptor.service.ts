@@ -22,7 +22,7 @@ export class InterceptorService implements HttpInterceptor {
 
     console.log(req.url);
 
-    const newRequest = req.url === this.environment.urlStore ? storeRequest : authRequest;
+    const newRequest = req.url === this.environment.urlBase ? storeRequest : authRequest;
 
     // Middleware
     return next.handle(newRequest);

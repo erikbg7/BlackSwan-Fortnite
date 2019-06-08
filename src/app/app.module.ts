@@ -20,6 +20,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { TestComponent } from './components/test/test.component';
 import { AccountComponent } from './components/management/account/account.component';
 import {TComponent} from './components/fortnite/test/test.component';
+import { StatsComponent } from './components/fortnite/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {TComponent} from './components/fortnite/test/test.component';
     ManagerComponent,
     TestComponent,
     AccountComponent,
-    TComponent
+    TComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,

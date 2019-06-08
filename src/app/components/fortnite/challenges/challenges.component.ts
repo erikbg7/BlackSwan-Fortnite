@@ -20,6 +20,7 @@ export class ChallengesComponent implements OnInit {
   renderChallenges = false;
   weeks: Week[];
 
+
   ngOnInit() {
     this.getCH();
 
