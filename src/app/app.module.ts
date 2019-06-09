@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreComponent } from './components/fortnite/store/store.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {InterceptorService} from './services/interceptor.service';
+import {InterceptorService} from './services/interceptor/interceptor.service';
 import { HomeComponent } from './components/view/home/home.component';
 import { FooterComponent } from './components/view/footer/footer.component';
 import { LoginComponent } from './components/management/login/login.component';

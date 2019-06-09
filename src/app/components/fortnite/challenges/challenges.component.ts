@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../../../services/store/store.service';
 import {Router} from '@angular/router';
 import {Item} from '../../../models/item';
 import {Challenge} from '../../../models/challenge/challenge';

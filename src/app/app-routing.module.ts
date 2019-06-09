@@ -9,6 +9,7 @@ import {ManagerComponent} from './components/management/manager/manager.componen
 import {TestComponent} from './components/test/test.component';
 import {AccountComponent} from './components/management/account/account.component';
 import {TComponent} from './components/fortnite/test/test.component';
+import {StatsComponent} from './components/fortnite/stats/stats.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/api/home', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'api/manager', component: ManagerComponent },
   { path: 'api/test', component: TestComponent },
   { path: 'api/account', component: AccountComponent },
-  { path: 'api/t', component: TComponent }
+  { path: 'api/t', component: TComponent },
+  { path: 'api/stats/:epicId', component: StatsComponent }
 
 
 

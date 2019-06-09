@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {FortniteApiService} from '../../../services/fortnite-api/fortnite-api.service';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,35 @@ import {Router} from '@angular/router';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private fortniteService: FortniteApiService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  searchEpicPlayer(username: string) {
+    this.fortniteService.getEpicId(username)
+      .subscribe( (res: object) => {
 
+        console.error(res);
+        console.error(res['data']);
+        const epicId = res['data']['uid'];
+
+        console.error(epicId);
+
+        this.router.navigateByUrl('/api/stats/' + epicId);
+
+
+        //console.error(info.valueOf());
+        //console.error(info.toString());
+
+
+
+        //alert(res['data']['entries']);
+      }
+  );
+
+
+  }
 
 
 }

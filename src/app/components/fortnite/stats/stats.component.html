@@ -1,3 +1,17 @@
-<p>
-  stats works!
-</p>
+
+<div class="search-player">
+  <input #searchBar class="form-control" type="text" (keyup.enter)="searchEpicPlayer(searchBar.value)" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search player stats by name or EpicGames Id">
+</div>
+
+<div class="statistics-container">
+  <div class="statistics-username"> <h1>{{username}}</h1> </div>
+  <div class="statistics-grid">
+    <div class="grid-wins"><h4> Wins: </h4><span> {{wins}} </span></div>
+    <div class="grid-kills"><h4> Kills: </h4> <span> {{kills}} </span></div>
+    <div class="grid-matches"><h4> Matches: </h4><span> {{matches}} </span></div>
+    <div class="grid-splitter"></div>
+    <div class="grid-winrate"><h4> Winrate: </h4><span> {{winrate}} </span></div>
+    <div class="grid-kd"><h4> K/D: </h4><span> {{kd}} </span></div>
+  </div>
+</div>
+
