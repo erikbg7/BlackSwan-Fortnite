@@ -21,8 +21,12 @@ export class FortniteApiService {
     return this.http.get(this.environment.urlChallenges);
   }
 
-  getEpicId(username: string) {}
+  getEpicId(username: string) {
+    return this.http.get(this.environment.urlEpicUsername + username);
+  }
 
-  getStatistics(epicId: string) {}
+  getStatistics(epicId: string) {
+    return this.http.get(this.environment.urlStatistics + epicId + '&platform=pc');
+  }
 
 }

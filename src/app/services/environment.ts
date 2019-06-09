@@ -11,5 +11,12 @@ export class Environment {
 
 
 
+
+
+  urlEpicUsername = 'https://cors-anywhere.herokuapp.com/https://fortnite-api.theapinetwork.com/users/id?username=';
+
+  urlStatistics = 'https://cors-anywhere.herokuapp.com/https://fortnite-api.theapinetwork.com/prod09/users/public/br_stats?user_id=';
+
+
 }
 
