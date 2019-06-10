@@ -9,7 +9,7 @@ import {FortniteApiService} from '../../../services/fortnite-api/fortnite-api.se
 })
 export class StatsComponent implements OnInit {
 
-  constructor(private activatedRouter: ActivatedRoute, private fortntieApiService: FortniteApiService) { }
+  constructor(private activatedRouter: ActivatedRoute, private fortniteService: FortniteApiService) { }
 
   username: string; wins: string; kills: string; matches: string; winrate: string; kd: string;
 
@@ -19,8 +19,16 @@ export class StatsComponent implements OnInit {
     });
   }
 
+  searchEpicPlayer(username: string) {
+    this.fortniteService.getEpicId(username)
+      .subscribe( (res: object) => {
+        const epicId = res['data']['uid'];
+        this.getUserStats(epicId);
+      });
+  }
+  
   getUserStats(epicId: string) {
-    this.fortntieApiService.getStatistics(epicId)
+    this.fortniteService.getStatistics(epicId)
       .subscribe(res => {
         console.error('stats --> ', res);
         this.username = res['username'];
@@ -29,7 +37,6 @@ export class StatsComponent implements OnInit {
         this.matches = res['totals']['matchesplayed'];
         this.winrate = res['totals']['winrate'];
         this.kd = res['totals']['kd'];
-
       });
   }
 }
