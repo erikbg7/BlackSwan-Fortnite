@@ -9,8 +9,8 @@
 </div>
 
 
-<div class="home-container">
 
+<!--div class="home-container">
   <button class="store-title" [routerLink]="['/api/account']">
     <h2>ACCOUNT (test)</h2>
     <span class="polygon"></span>
@@ -20,8 +20,25 @@
     <h2>BACKGROUND (test)</h2>
     <span class="polygon"></span>
   </button>
+</div-->
+
+<br>
+<br>
+
+<h1 class="news-header">LAST EPIC NEWS</h1>
+<div class="news-splitter">
+  <span class="polygon"></span>
+</div>
 
 
+<div class="news-container">
+  <div class="news-card" *ngFor="let news of epicNews">
+    <div class="news-info">
+      <img src= {{news.image}} align="left" height="auto" width="35%">
+      <h1 class="news-title"> {{news.title}} </h1>
+      <h3 class="news-subtitle"> {{news.body}} </h3>
+    </div>
+  </div>
 </div>
 
 

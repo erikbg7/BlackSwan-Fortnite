@@ -29,4 +29,8 @@ export class FortniteApiService {
     return this.http.get(this.environment.urlStatistics + epicId + '&platform=pc');
   }
 
+  getNews() {
+    return this.http.get(this.environment.urlNews);
+  }
+
 }

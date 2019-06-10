@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FortniteApiService} from '../../../services/fortnite-api/fortnite-api.service';
+import {EpicNew, New} from '../../../models/new/new';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,12 @@ export class HomeComponent implements OnInit {
 
   constructor(private fortniteService: FortniteApiService, private router: Router) { }
 
+  epicNews: EpicNew[];
+
   ngOnInit() {
+    const s = new Date(1559433647).toLocaleDateString();
+    console.error('DATE --> ', s);
+    this.loadNews();
   }
 
   searchEpicPlayer(username: string) {
@@ -32,19 +38,15 @@ export class HomeComponent implements OnInit {
         console.error(epicId);
 
         this.router.navigateByUrl('/api/stats/' + epicId);
-
-
-        //console.error(info.valueOf());
-        //console.error(info.toString());
-
-
-
-        //alert(res['data']['entries']);
-      }
-  );
-
-
+      });
   }
 
+  loadNews() {
+    this.fortniteService.getNews()
+      .subscribe(res => {
+        this.epicNews = res['data'];
+        console.error('DA NEWS ', this.epicNews );
+      });
+  }
 
 }

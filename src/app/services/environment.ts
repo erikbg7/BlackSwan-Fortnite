@@ -17,6 +17,9 @@ export class Environment {
 
   urlStatistics = 'https://cors-anywhere.herokuapp.com/https://fortnite-api.theapinetwork.com/prod09/users/public/br_stats?user_id=';
 
+  urlNews = 'https://fortnite-api.theapinetwork.com/br_motd/get';
+
+
 
 }
 
