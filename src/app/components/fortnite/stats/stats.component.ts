@@ -26,7 +26,7 @@ export class StatsComponent implements OnInit {
         this.getUserStats(epicId);
       });
   }
-  
+
   getUserStats(epicId: string) {
     this.fortniteService.getStatistics(epicId)
       .subscribe(res => {

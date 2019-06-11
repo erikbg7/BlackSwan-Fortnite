@@ -1,5 +1,6 @@
 <h2>Login</h2>
 <form id="logForm" [formGroup]="loginForm" (ngSubmit)="login()">
+  <span *ngIf="renderLoginForm===true">
   <div class="form-group">
     <label>Email</label>
     <input type="text" class="form-control" formControlName="email"/>
@@ -23,8 +24,14 @@
     </div>
   </div>
   <div class="form-group">
-    <button class="btn btn-primary" type = "submit" [disabled]="!loginForm.valid">Log in</button>
-    <button class="btn btn-primary" [routerLink]="['/api/signup']" style="margin-left: 30px">Register</button>
+    <button class="btn btn-primary btn-login" type = "submit" [disabled]="!loginForm.valid">Log in</button>
   </div>
+  </span>
 </form>
 
+<div class="social-container">
+  <button *ngIf="renderLoginForm===false" class="btn btn-light btn-social" (click)="toggleLoginForm()"><img class="img-responsive" style="height: 1.6rem" src="assets/socialblackswan.png"> &nbsp; BlackSwan Account</button>
+  <button class="btn btn-light btn-social"><img class="img-responsive" style="height: 1.6rem" src="assets/socialgoogle.png"> &nbsp; Log in with Google</button>
+  <button class="btn btn-light btn-social"><img class="img-responsive" style="height: 1.8rem;" src="assets/socialfacebook.png">&nbsp;Log in with Facebook</button>
+  <div style="text-align: center; margin-top: 1rem; color: white" > No account? <a routerLink="/api/signup" style="font-weight: bold">Create one</a></div>
+</div>

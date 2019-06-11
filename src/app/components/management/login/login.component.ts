@@ -14,6 +14,7 @@ import { User} from '../../../models/user/user';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  renderLoginForm: boolean;
 
   validationMessages: any;
 
@@ -32,18 +33,27 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.renderLoginForm = false;
     this.validationMessages = {
       email: [
-        { type: 'required',
-          message: 'Email is required' },
-        { type: 'pattern',
-          message: 'Invalid email: It must contain a @ and a valid domain.' }
+        {
+          type: 'required',
+          message: 'Email is required'
+        },
+        {
+          type: 'pattern',
+          message: 'Invalid email: It must contain a @ and a valid domain.'
+        }
       ],
       password: [
-        { type: 'required',
-          message: 'Password is required' },
-        { type: 'pattern',
-          message: 'Invalid password: Must contain at least one number and must be between 4 and 8 characters' }
+        {
+          type: 'required',
+          message: 'Password is required'
+        },
+        {
+          type: 'pattern',
+          message: 'Invalid password: Must contain at least one number and must be between 4 and 8 characters'
+        }
       ]
     };
   }
@@ -66,10 +76,15 @@ export class LoginComponent implements OnInit {
   }
 
   private handleError(err: HttpErrorResponse) {
-    if ( err.status === 500 ) {
+    if (err.status === 500) {
       alert(err);
-    } else if ( err.status === 404 ) {
+    } else if (err.status === 404) {
       alert('The user does not exist');
     }
   }
+
+  toggleLoginForm() {
+    this.renderLoginForm = true;
+  }
+
 }
