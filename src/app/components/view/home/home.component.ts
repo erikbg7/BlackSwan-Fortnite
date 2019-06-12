@@ -20,9 +20,16 @@ export class HomeComponent implements OnInit {
   constructor(private fortniteService: FortniteApiService, private router: Router) { }
 
   epicNews: EpicNew[];
+
+  toggleMoreNews: boolean;
+
+
+
   newsCache: EpicNew[];
 
   ngOnInit() {
+    this.toggleMoreNews = false;
+
     const s = new Date(1559433647).toLocaleDateString();
     console.error('DATE --> ', s);
     this.loadNews();
@@ -40,7 +47,7 @@ export class HomeComponent implements OnInit {
   loadNews() {
     if (localStorage.getItem('EpicNews')) {
       this.epicNews = JSON.parse(localStorage.getItem('EpicNews'));
-      console.error('Storage news');
+      console.error('Storage news', this.epicNews);
     } else {
       this.fortniteService.getNews()
         .subscribe(res => {
@@ -50,4 +57,9 @@ export class HomeComponent implements OnInit {
         });
     }
   }
+
+  toggleNews() {
+    this.toggleMoreNews = true;
+  }
+
 }

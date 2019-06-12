@@ -8,6 +8,21 @@
 
 <div class="store-container" *ngIf="renderComponents === true">
 
+  <!--div *ngFor="let item of weeks; let i = index">
+    <div *ngIf="i % 5 == 0" class="row btn-group" role="group">
+      <button type="button" class="btn btn-secondary">{{weeks[i]['value']}}</button>
+      <button *ngIf="i + 1 < weeks.length" type="button" class="btn btn-secondary">{{ weeks[i + 1]['value'] }}</button>
+      <button *ngIf="i + 2 < weeks.length" type="button" class="btn btn-secondary">{{ weeks[i + 2]['value'] }}</button>
+      <button *ngIf="i + 3 < weeks.length" type="button" class="btn btn-secondary">{{ weeks[i + 3]['value'] }}</button>
+      <button *ngIf="i + 4 < weeks.length" type="button" class="btn btn-secondary">{{ weeks[i + 4]['value'] }}</button>
+    </div>
+  </div-->
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button *ngFor="let week of weeks; let i = index" type="button" class="btn btn-secondary">Week {{i +1}}</button>
+  </div>
+
+  <br>
 
   <div class="weeks-container" *ngFor="let week of weeks; let i = index">
     <div class="challenges-container">

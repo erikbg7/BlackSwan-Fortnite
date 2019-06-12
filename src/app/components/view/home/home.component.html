@@ -32,13 +32,46 @@
 
 
 <div class="news-container">
-  <div class="news-card" *ngFor="let news of epicNews">
-    <div class="news-info">
-      <img src= {{news.image}} align="left" height="auto" width="35%">
-      <h1 class="news-title"> {{news.title}} </h1>
-      <h3 class="news-subtitle"> {{news.body}} </h3>
+  <span *ngFor="let news of epicNews; let i = index">
+    <div class="news-card" *ngIf="i <= 1 || !!toggleMoreNews">
+      <div class="news-info">
+        <img src= {{news.image}} align="left" height="auto" width="35%">
+        <h2 class="news-title"> {{news.title}} </h2>
+        <h4 class="news-subtitle"> {{news.body}} </h4>
+      </div>
     </div>
-  </div>
+    <div class="news-card" style="height: 7rem; overflow: hidden;" *ngIf="i === 2 && !!!toggleMoreNews" >
+      <div class="news-info" style="border-bottom: 0;">
+        <img src= {{news.image}} align="left" height="auto" width="35%">
+        <h2 class="news-title"> {{news.title}} </h2>
+      </div>
+    </div>
+  </span>
+
+<div style="text-align: center" *ngIf="!!!toggleMoreNews">
+  <svg width="120" height="120" style="position: sticky; z-index: 2; margin-top: -4rem" (click)="toggleNews()">
+    <a>
+      <path d="M   0   0
+             L 120   0
+             L 120 120
+             L  60  80
+             L   0 120
+             Z"
+            fill="#9A2EFE"/>
+      <text x="60"
+            y="50"
+            fill="#FFFFFF"
+            text-anchor="middle"
+            alignment-baseline="middle">
+        View More
+      </text>
+    </a>
+  </svg>
+</div>
+
+
+
+
 </div>
 
 

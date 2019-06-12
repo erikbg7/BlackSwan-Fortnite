@@ -71,7 +71,8 @@ h2 {
   height: 3px;
 }
 
-.news-container {}
+.news-container {
+}
 
 .news-card {
   display: grid;
@@ -79,19 +80,22 @@ h2 {
   background-color: #252525;
   box-shadow: 6px 10px 5px 0 rgba(255,255,255,0.1);
   margin-bottom: 27px;
+  margin-left: 10%;
+  margin-right: 10%;
+  max-width: 1063px;
 }
 
 
 .news-info {
   font-family: "Roboto", sans-serif;
   border: 5px solid #252525;
+  box-shadow: inset -3px -20px 34px 4px rgba(255,255,255,0.75);
+  box-shadow: inset -3px -9px 31px 5px rgba(255,255,255,0.75);
 }
 
 img {
   margin-right: 25px;
 }
-
-
 
 .news-title {
   margin-top: 10px;
@@ -103,9 +107,12 @@ img {
 .news-subtitle {
   font-family: 'Luckiest Guy', cursive;
   color: whitesmoke;
+  max-height: 5rem;
   letter-spacing: 1px;
+  overflow: hidden;
 }
 
+a:hover path { fill: #BE81F7 }
 
 
 

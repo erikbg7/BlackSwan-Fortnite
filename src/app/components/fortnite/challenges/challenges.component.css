@@ -43,3 +43,7 @@ h2 {
   width: max-content;
   margin-left: auto;
 }
+
+.btn-group {
+  display: flex;
+}
