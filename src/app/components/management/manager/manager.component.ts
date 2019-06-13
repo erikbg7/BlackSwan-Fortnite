@@ -45,6 +45,7 @@ export class ManagerComponent implements OnInit {
    * @param id
    */
   confirmDelete(id: string, i: number) {
+    alert(id + '   ' + i)
     if (confirm('La cuenta del usuario se borrará para siempre, estás seguro?')) {
       this.userService.deleteUser(id)
         .subscribe(

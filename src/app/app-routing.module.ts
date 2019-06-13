@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'api/signup', component: RegisterComponent },
   { path: 'api/manager', component: ManagerComponent },
   { path: 'api/test', component: TestComponent },
-  { path: 'api/account', component: AccountComponent },
+  { path: 'api/myaccount', component: AccountComponent },
   { path: 'api/t', component: TComponent },
   { path: 'api/stats/:epicId', component: StatsComponent }
 

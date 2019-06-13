@@ -29,13 +29,13 @@
       <a dropdownToggle  type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
         <i class="fas fa-user"></i> Profile <span class="caret"></span></a>
       <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Account</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Configuration</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/api/myaccount']" >My Account</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/api/myaccount']" >Configuration</a>
         <!--a *ngIf="user.isAdmin === true">Manage Users</a-->
         <div class="divider dropdown-divider"></div>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#" [routerLink]="['/api/manager']">Manage Users</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/api/manager']">Manage Users</a>
         <div class="divider dropdown-divider"></div>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log Out</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="logOut()">Log Out</a>
       </div>
     </div>
 

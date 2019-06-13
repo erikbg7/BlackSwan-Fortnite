@@ -23,7 +23,7 @@ export class UsersService {
   }
 
   deleteUser(id: string) {
-    return this.http.delete(this.environment.urlUsers);
+    return this.http.delete(this.environment.urlUsers + '/' + id);
   }
 
 }
