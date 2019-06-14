@@ -19,6 +19,7 @@ export class Environment {
 
   urlNews = 'https://fortnite-api.theapinetwork.com/br_motd/get';
 
+  store = 'https://fortnite-api.theapinetwork.com/store/get';
 
 
 }

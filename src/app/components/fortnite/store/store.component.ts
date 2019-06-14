@@ -18,12 +18,14 @@ export class StoreComponent implements OnInit {
   renderStore = false;
 
 
+
+
   res2: Item[];
 
 
 
   ngOnInit() {
-    // this.getStore();
+    this.getStore();
     this.res2 = [
       {
         imageUrl: 'https://cdn.thetrackernetwork.com/cdn/fortnite/4DEB1211_large.png',
@@ -164,6 +166,11 @@ export class StoreComponent implements OnInit {
           this.renderStore = true;
         }
       );
+
+    this.fortniteService.store()
+      .subscribe( (res => {
+        console.error('NEW STORE BITCH', res);
+      } ));
   }
 
   defineStyle(style: 'Handmade' | 'Sturdy' | 'Quality' | 'Fine'): object {

@@ -33,4 +33,8 @@ export class FortniteApiService {
     return this.http.get(this.environment.urlNews);
   }
 
+  store() {
+    return this.http.get(this.environment.store);
+  }
+
 }
