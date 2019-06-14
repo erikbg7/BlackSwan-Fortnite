@@ -45,18 +45,17 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.validationMessages = {
       displayName: [
-        { type: 'required', message: 'Name is required'},
-        { type: 'pattern', message: 'It has to be between 3 and 10 characters long'}
+        { type: 'required', message: 'Username is required.'},
+        { type: 'pattern', message: 'Must be 3-10 characters long.'}
       ],
       email: [
-        { type: 'required', message: 'Email is required' },
-        { type: 'unique', message: 'Email must be unique'} ,
-        { type: 'pattern', message:
-            'It must be valid. Must contain a @ and only one dot in the domain. Domain between 2 and 3 characters long' }
+        { type: 'required', message: 'Email is required.' },
+        { type: 'unique', message: 'Email must be unique.'} ,
+        { type: 'pattern', message: 'With domain 2-3 characters long.' }
       ],
       password: [
         { type: 'required', message: 'Password is required' },
-        { type: 'pattern', message: 'It must be valid. Must contain at least one number and must be between 4 and 8 characters' }
+        { type: 'pattern', message: 'At least one number and 4-8 characters long.' }
       ],
       confirmPassword: [
         { type: 'required', message: 'Password is required and both must match' },
@@ -67,11 +66,12 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.registerForm.value);
-    const user = new User(
-      this.registerForm.value.displayName,
+    const user = new User('',
       this.registerForm.value.email,
-      this.registerForm.value.password,
-      this.registerForm.value.confirmPassword);
+      this.registerForm.value.displayName,
+      '',
+      this.registerForm.value.password
+    );
 
 
     this.userService.signup(user)

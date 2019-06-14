@@ -1,8 +1,17 @@
+
+.login-container {
+  background-color: black;
+  padding: 2rem 2.8rem 2rem 2.8rem;
+  border-radius: 4rem;
+  box-shadow: 6px 10px 5px 0 rgba(255,255,255,0.1);
+}
+
 #logForm {
   color: #FFFFFF;
   max-width: 320px;
   min-width: 320px;
-
+  margin: 0 auto;
+  margin-top: 1rem;
 }
 
 h2 {
@@ -22,6 +31,10 @@ h2 {
   text-transform: none;
   font-weight: bold;
   height: 3rem;
+  transition: 0.3s;
+}
+.btn-social:hover {
+  transform: scale(1.05);
 }
 
 .social-container {

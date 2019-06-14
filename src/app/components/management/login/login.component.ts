@@ -4,12 +4,14 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User} from '../../../models/user/user';
+import {NavbarComponent} from '../../view/navbar/navbar.component';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthService]
+  providers: [AuthService, NavbarComponent]
 })
 export class LoginComponent implements OnInit {
 
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   validationMessages: any;
 
-  constructor(private userService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private userService: AuthService, private router: Router, private formBuilder: FormBuilder, private navBar: NavbarComponent) {
 
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
         },
         {
           type: 'pattern',
-          message: 'Invalid email: It must contain a @ and a valid domain.'
+          message: ' It must contain a @ and a valid domain.'
         }
       ],
       password: [
@@ -52,7 +54,7 @@ export class LoginComponent implements OnInit {
         },
         {
           type: 'pattern',
-          message: 'Invalid password: Must contain at least one number and must be between 4 and 8 characters'
+          message: 'At least one number and be between 4-8 characters.'
         }
       ]
     };
@@ -60,13 +62,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.loginForm.value);
-    const user = new User(this.loginForm.value.email, this.loginForm.value.password);
+    const user = new User('', this.loginForm.value.email,  '', '', this.loginForm.value.password);
     this.userService.signin(user)
       .subscribe(
         res => {
           console.log(res);
           const token = res['token'];
           localStorage.setItem('token', token);
+          this.hideLoginNavBarItem();
           this.router.navigateByUrl('/api/manager');
         },
         err => {
@@ -76,15 +79,16 @@ export class LoginComponent implements OnInit {
   }
 
   private handleError(err: HttpErrorResponse) {
-    if (err.status === 500) {
-      alert(err);
-    } else if (err.status === 404) {
-      alert('The user does not exist');
-    }
+    alert(err.error['message']);
   }
 
   toggleLoginForm() {
     this.renderLoginForm = true;
   }
+
+  hideLoginNavBarItem() {
+    this.navBar.checkToken();
+  }
+
 
 }

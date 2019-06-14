@@ -2,7 +2,7 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#">Black Swan</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/api/home']">Black Swan</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
@@ -19,9 +19,11 @@
       <li class="nav-item" [routerLink]="['/api/challenges']">
         <a class="nav-link waves-light" mdbWavesEffect>Challenges</a>
       </li>
-      <li class="nav-item" [routerLink]="['/api/login']">
+      <span>
+        <li class="nav-item" *ngIf="renderLoginMenu" [routerLink]="['/api/login']">
         <a class="nav-link waves-light" mdbWavesEffect>Log In</a>
       </li>
+      </span>
     </ul>
 
     <!-- Dropdown -->

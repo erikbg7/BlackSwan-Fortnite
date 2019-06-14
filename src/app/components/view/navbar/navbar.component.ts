@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,13 +8,24 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  renderLoginMenu: boolean;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.renderLoginMenu = true;
   }
+
+  checkToken() {
+    this.renderLoginMenu = !!localStorage.getItem('token');
+  }
+
+
   logOut() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/api/home');
   }
+
+
 
 }
