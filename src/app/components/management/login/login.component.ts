@@ -5,13 +5,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User} from '../../../models/user/user';
 import {NavbarComponent} from '../../view/navbar/navbar.component';
+import {DataService} from '../../../services/data/data.service';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthService, NavbarComponent]
+  providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
 
@@ -20,7 +21,12 @@ export class LoginComponent implements OnInit {
 
   validationMessages: any;
 
-  constructor(private userService: AuthService, private router: Router, private formBuilder: FormBuilder, private navBar: NavbarComponent) {
+  constructor(
+    private userService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private dataService: DataService
+    ) {
 
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -35,6 +41,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.userService.loginActive.subscribe(res => {
+      console.error('active? ', res);
+    });
+
+
     this.renderLoginForm = false;
     this.validationMessages = {
       email: [
@@ -69,7 +81,7 @@ export class LoginComponent implements OnInit {
           console.log(res);
           const token = res['token'];
           localStorage.setItem('token', token);
-          this.hideLoginNavBarItem();
+          setTimeout(this.hideLoginNavBarItem, 100);
           this.router.navigateByUrl('/api/manager');
         },
         err => {
@@ -86,8 +98,14 @@ export class LoginComponent implements OnInit {
     this.renderLoginForm = true;
   }
 
-  hideLoginNavBarItem() {
-    this.navBar.checkToken();
+  hideLoginNavBarItem(): void {
+    //this.dataService.checkLogin();
+    //this.userService.check();
+    this.dataService.sendMessage('Message from login');
+
+
+
+
   }
 
 

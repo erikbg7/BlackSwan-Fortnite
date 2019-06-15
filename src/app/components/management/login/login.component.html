@@ -29,6 +29,7 @@
     </div>
   </div>
   <div class="form-group">
+
     <button class="btn btn-primary btn-login" type = "submit" [disabled]="!loginForm.valid">Log in</button>
   </div>
   </span>
@@ -40,6 +41,7 @@
     <button class="btn btn-light btn-social"><img class="img-responsive" style="height: 1.8rem;" src="assets/socialfacebook.png">&nbsp;Log in with Facebook</button>
     <div style="text-align: center; margin-top: 1rem; color: white" > No account? <a routerLink="/api/signup" style="font-weight: bold">Create one</a></div>
   </div>
+  <button class="btn btn-primary btn-login" (click)="hideLoginNavBarItem()">Hide</button>
 
 
 </div>
