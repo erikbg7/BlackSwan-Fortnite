@@ -9,7 +9,7 @@
 
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" (click)="check()" >
+      <li class="nav-item" [routerLink]="['/api/home']">
       <!--li class="nav-item active"-->
         <a class="nav-link waves-light" mdbWavesEffect>Home<!--span class="sr-only">(current)</span--></a>
       </li>
@@ -20,14 +20,14 @@
         <a class="nav-link waves-light" mdbWavesEffect>Challenges</a>
       </li>
       <span>
-        <li class="nav-item" *ngIf="renderLoginMenu" [routerLink]="['/api/login']">
+        <li class="nav-item" *ngIf="!hideLoginMenuItem" [routerLink]="['/api/login']">
         <a class="nav-link waves-light" mdbWavesEffect>Log In</a>
       </li>
       </span>
     </ul>
 
     <!-- Dropdown -->
-    <div class="nav-item dropdown" *ngIf="!renderLoginMenu" dropdown>
+    <div class="nav-item dropdown" *ngIf="hideLoginMenuItem" dropdown>
       <a dropdownToggle  type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
         <i class="fas fa-user"></i> Profile <span class="caret"></span></a>
       <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">

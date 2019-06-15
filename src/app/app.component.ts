@@ -7,7 +7,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent {
 
   title = 'BS-Fortnite';
 
@@ -15,23 +15,10 @@ export class AppComponent implements OnInit, OnDestroy{
   subscription: Subscription;
 
 
-
   constructor(private dataService: DataService) {
-    this.subscription = this.dataService.getMessage().subscribe( message => {
+    this.subscription = this.dataService.getState().subscribe(message => {
       this.message = message;
       console.error('app message', this.message);
     });
   }
-
-  ngOnInit() {
-
-  }
-
-  ngOnDestroy() {
-
-  }
-
-
-
-
 }

@@ -36,7 +36,7 @@
   </form>
 
   <div class="social-container">
-    <button *ngIf="renderLoginForm===false" class="btn btn-light btn-social" (click)="toggleLoginForm()"><img class="img-responsive" style="height: 1.6rem" src="assets/socialblackswan.png"> &nbsp; BlackSwan Account</button>
+    <button *ngIf="!renderLoginForm" class="btn btn-light btn-social" (click)="toggleLoginForm()"><img class="img-responsive" style="height: 1.6rem" src="assets/socialblackswan.png"> &nbsp; BlackSwan Account</button>
     <button class="btn btn-light btn-social"><img class="img-responsive" style="height: 1.6rem" src="assets/socialgoogle.png"> &nbsp; Log in with Google</button>
     <button class="btn btn-light btn-social"><img class="img-responsive" style="height: 1.8rem;" src="assets/socialfacebook.png">&nbsp;Log in with Facebook</button>
     <div style="text-align: center; margin-top: 1rem; color: white" > No account? <a routerLink="/api/signup" style="font-weight: bold">Create one</a></div>

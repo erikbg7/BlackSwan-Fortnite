@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import {Observable, Subject, Subscription} from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
+
 export class DataService {
+
   private subject = new Subject<any>();
 
-  sendMessage(message: string) {
-    this.subject.next({ text: message });
+
+  sendMessage(message?: string, active?: boolean) {
+    this.subject.next({ text: message, login: active });
   }
 
-  clearMessage() {
-    this.subject.next();
+  updateState(active: any) {
+    this.subject.next(active);
   }
 
-  getMessage(): Observable<any> {
+  getState(): Observable<any> {
     return this.subject.asObservable();
   }
 }

@@ -13,7 +13,6 @@ export class UsersService {
   users: User[];
 
 
-
   constructor(private http: HttpClient) {
     this.environment = new Environment();
   }

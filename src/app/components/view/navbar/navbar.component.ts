@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {DataService} from '../../../services/data/data.service';
 import {AuthService} from '../../../services/auth/auth.service';
 import {LoginComponent} from '../../management/login/login.component';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -13,36 +14,31 @@ import {LoginComponent} from '../../management/login/login.component';
 })
 export class NavbarComponent implements OnInit {
 
-  renderLoginMenu: boolean;
+  state: any;
+  finalState: any;
+  subscription: Subscription;
 
+  hideLoginMenuItem: boolean;
 
-  constructor(private router: Router, private dataService: AuthService) {
-    this.dataService.loginActive.subscribe(active => this.renderLoginMenu = active);
+  constructor(private router: Router, private dService: AuthService, private dataService: DataService) {
+    this.subscription = this.dataService.getState().subscribe(state => {
+      this.state = state;
+      console.error('state ', this.state );
+      this.hideLoginMenuItem = state['login'];
+      console.error('navbar message', this.state);
+    });
 
   }
 
   ngOnInit() {
-    this.dataService.loginActive.subscribe(res => {
-      console.error('active from navbar? ', res);
-    });
+    this.hideLoginMenuItem = !!localStorage.getItem('token');
   }
-
-  public checkToken() {
-    //alert('Should render? ' + !!!localStorage.getItem('token'));
-    //this.renderLoginMenu = !!!localStorage.getItem('token');
-    //console.error('render ', this.renderLoginMenu);
-  }
-
 
   logOut() {
     localStorage.removeItem('token');
-    //this.renderLoginMenu = true;
+    this.finalState = {...this.state, login: !!localStorage.getItem('token')};
+    this.dataService.updateState(this.finalState);
     this.router.navigateByUrl('/api/home');
   }
 
-
-  check() {
-    //this.dataService.checkLogin();
-    this.dataService.check();
-  }
 }

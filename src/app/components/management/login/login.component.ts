@@ -4,7 +4,6 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User} from '../../../models/user/user';
-import {NavbarComponent} from '../../view/navbar/navbar.component';
 import {DataService} from '../../../services/data/data.service';
 
 
@@ -16,7 +15,13 @@ import {DataService} from '../../../services/data/data.service';
 })
 export class LoginComponent implements OnInit {
 
+  state: any;
+  finalState: any;
+
   loginForm: FormGroup;
+  hideLoginMenuItem: boolean;
+
+
   renderLoginForm: boolean;
 
   validationMessages: any;
@@ -42,9 +47,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userService.loginActive.subscribe(res => {
-      console.error('active? ', res);
-    });
+    this.hideLoginMenuItem = false;
 
 
     this.renderLoginForm = false;
@@ -81,7 +84,7 @@ export class LoginComponent implements OnInit {
           console.log(res);
           const token = res['token'];
           localStorage.setItem('token', token);
-          setTimeout(this.hideLoginNavBarItem, 100);
+          this.hideLoginNavBarItem();
           this.router.navigateByUrl('/api/manager');
         },
         err => {
@@ -99,13 +102,9 @@ export class LoginComponent implements OnInit {
   }
 
   hideLoginNavBarItem(): void {
-    //this.dataService.checkLogin();
-    //this.userService.check();
-    this.dataService.sendMessage('Message from login');
-
-
-
-
+    this.dataService.getState().subscribe( state => this.state = state);
+    this.finalState = {...this.state, login: !!localStorage.getItem('token')};
+    this.dataService.updateState(this.finalState);
   }
 
 
