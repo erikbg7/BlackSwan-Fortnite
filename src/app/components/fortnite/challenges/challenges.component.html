@@ -1,58 +1,34 @@
 
 
+<div class="challenges-container" *ngIf="renderComponent === true">
+
+
   <div class="challenges-title">
-    <h2>SEASON 8 challenges</h2>
+    <h2>SEASON 9 challenges</h2>
     <span class="polygon"></span>
   </div>
-  <br>
 
-<div class="store-container" *ngIf="renderComponents === true">
-
-  <!--div *ngFor="let item of weeks; let i = index">
+  <div *ngFor="let week of weeks; let i = index">
     <div *ngIf="i % 5 == 0" class="row btn-group" role="group">
-      <button type="button" class="btn btn-secondary">{{weeks[i]['value']}}</button>
-      <button *ngIf="i + 1 < weeks.length" type="button" class="btn btn-secondary">{{ weeks[i + 1]['value'] }}</button>
-      <button *ngIf="i + 2 < weeks.length" type="button" class="btn btn-secondary">{{ weeks[i + 2]['value'] }}</button>
-      <button *ngIf="i + 3 < weeks.length" type="button" class="btn btn-secondary">{{ weeks[i + 3]['value'] }}</button>
-      <button *ngIf="i + 4 < weeks.length" type="button" class="btn btn-secondary">{{ weeks[i + 4]['value'] }}</button>
-    </div>
-  </div-->
-
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button *ngFor="let week of weeks; let i = index" type="button" class="btn btn-secondary">Week {{i +1}}</button>
-  </div>
-
-  <br>
-
-  <div class="weeks-container" *ngFor="let week of weeks; let i = index">
-    <div class="challenges-container">
-      <button type="button" class="btn btn-secondary week-btn" (click)="toogleChallenges()">Week {{i + 1}}</button>
-      <span *ngIf="renderChallenges === true">
-        <span *ngFor="let ch of week" >
-          <br># {{ch.challenge}}
-        </span>
-        <br>
-        <br>
-      </span>
+      <button type="button" class="btn" (click)="selectWeekChallenges(week.week-1)" [ngStyle]="{'background-color': selectedWeekStyle(week.week-1)}">{{weeks[i]['value']}}</button>
+      <button *ngIf="i + 1 < weeks.length" type="button" class="btn" (click)="selectWeekChallenges(week.week)" [ngStyle]="{'background-color': selectedWeekStyle(week.week)}">{{ weeks[i + 1]['value'] }}</button>
+      <button *ngIf="i + 2 < weeks.length" type="button" class="btn" (click)="selectWeekChallenges(week.week+1)" [ngStyle]="{'background-color': selectedWeekStyle(week.week+1)}">{{ weeks[i + 2]['value'] }}</button>
+      <button *ngIf="i + 3 < weeks.length" type="button" class="btn" (click)="selectWeekChallenges(week.week+2)" [ngStyle]="{'background-color': selectedWeekStyle(week.week+2)}">{{ weeks[i + 3]['value'] }}</button>
+      <button *ngIf="i + 4 < weeks.length" type="button" class="btn" (click)="selectWeekChallenges(week.week+3)" [ngStyle]="{'background-color': selectedWeekStyle(week.week+3)}">{{ weeks[i + 4]['value'] }}</button>
     </div>
   </div>
-
-
-
-
-
-  <!--div class="weeks-container" *ngFor="let week of weeks; let i = index">
-    <div class="challenges-container">
-      <h1>Week {{i + 1}} </h1>
-      <span *ngFor="let ch of week" >
-      <br># {{ch.challenge}}
+  <span class="challenges-detail">
+    <span *ngIf="selectedChallenges.length === 0">
+      <br>
+      <h4 class="challenge-description">Week {{selectedWeek + 1}} challenges are locked. </h4>
+      <br>
+      <i class="fa fa-lock locked" aria-hidden="true"></i>
     </span>
-      <div class="divider dropdown-divider"></div>
-      <br>
-      <br>
-    </div>
-  </div-->
-
+    <span *ngFor="let ch of selectedChallenges; let i = index" >
+      <br><h4 class="challenge-description"> #{{i+1}}.  {{ch.challenge}}</h4>
+    </span>
+    <br>
+  </span>
 </div>
 
 

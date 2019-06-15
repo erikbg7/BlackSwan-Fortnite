@@ -1,4 +1,6 @@
 export class Environment {
+  cors = 'https://cors-anywhere.herokuapp.com/';
+
   urlStore = 'https://cors-anywhere.herokuapp.com/https://api.fortnitetracker.com/v1/store';
 
   urlBase = 'https://fortnite-public-api.theapinetwork.com/prod09/challenges/get?season=current';
@@ -7,15 +9,18 @@ export class Environment {
 
   urlUsers = 'http://localhost:3001/api/users';
 
-  urlChallenges = 'https://fortnite-public-api.theapinetwork.com/prod09/challenges/get?season=current';
 
 
 
 
 
-  urlEpicUsername = 'https://cors-anywhere.herokuapp.com/https://fortnite-api.theapinetwork.com/users/id?username=';
 
-  urlStatistics = 'https://cors-anywhere.herokuapp.com/https://fortnite-api.theapinetwork.com/prod09/users/public/br_stats?user_id=';
+
+  urlChallenges = 'https://fortnite-api.theapinetwork.com/challenges/get?season=current';
+
+  urlEpicUsername = 'https://fortnite-api.theapinetwork.com/users/id?username=';
+
+  urlStatistics = 'https://fortnite-api.theapinetwork.com/prod09/users/public/br_stats?user_id=';
 
   urlNews = 'https://fortnite-api.theapinetwork.com/br_motd/get';
 

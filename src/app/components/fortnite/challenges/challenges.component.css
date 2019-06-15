@@ -10,31 +10,6 @@
   justify-content: flex-end
 }
 
-.weeks-container .challenges-container {
-  color: #fff;
-}
-
-.week-btn {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  width: 60%;
-  font-weight: bold;
-  font-size: large;
-  background-image: linear-gradient(#4B088A, #aa66cc);
-  border: solid 1px #BE81F7;
-}
-
-h1 {
-  text-align: center;
-}
-
-
-
-h2 {
-  margin: 5px 0 5px 15px;
-}
-
 .polygon {
   background: #d9b00b;
   clip-path: polygon(100% 0%,100% 100%,54% 40%,56% 67.5%,0% 0%);
@@ -44,6 +19,34 @@ h2 {
   margin-left: auto;
 }
 
+.challenges-container {
+  text-align: center;
+}
+
+.challenges-detail {
+  color: #fff;
+}
+
+h1 { text-align: center; }
+
+h2 { margin: 5px 0 5px 15px; }
+
 .btn-group {
   display: flex;
+}
+
+.btn {
+  font-weight: bold;
+}
+
+.challenge-description {
+  font-family: monospace;
+  color: whitesmoke;
+  max-height: 5rem;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+
+.locked {
+  font-size: 6rem;
 }

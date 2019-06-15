@@ -16,35 +16,39 @@ export class ChallengesComponent implements OnInit {
 
   constructor(private fortniteService: FortniteApiService, private router: Router) { }
 
-  renderComponents = false;
-  renderChallenges = false;
+  renderComponent = false;
   weeks: Week[];
+  selectedChallenges: Challenge[];
+  selectedWeek: number;
+  selected: string;
 
 
   ngOnInit() {
-    this.getCH();
-
+    this.getAllChallenges();
   }
 
-  getCH() {
+  getAllChallenges() {
     this.fortniteService.getChallenges()
       .subscribe((res: object) => {
         this.weeks = Object.values(res['challenges']);
-        console.log(this.weeks);
-        this.renderComponents = true;
-
+        this.selectWeekChallenges(0);
+        this.selectedWeek = 0;
+        this.renderComponent = true;
         //  this.weeks = res.challenges;
         // console.log(this.weeks['week1']);
         // console.log(Object.values(this.weeks));
-
-
         }
       );
   }
 
-  toogleChallenges() {
-    this.renderChallenges = !this.renderChallenges;
-}
+  selectWeekChallenges(index: number) {
+    this.selectedWeek = index;
+    this.selectedChallenges = this.weeks[index]['entries'];
+    console.error('selected', this.selectedChallenges);
+  }
 
+  selectedWeekStyle(index: number) {
+    if (this.selectedWeek === index) { return '#773399'; } else { return '#aa66cc'; }
+  }
 
 }
