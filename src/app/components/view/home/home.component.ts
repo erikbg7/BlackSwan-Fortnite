@@ -23,8 +23,6 @@ export class HomeComponent implements OnInit {
 
   toggleMoreNews: boolean;
 
-
-
   newsCache: EpicNew[];
 
   ngOnInit() {
@@ -36,16 +34,12 @@ export class HomeComponent implements OnInit {
   }
 
   searchEpicPlayer(username: string) {
-    this.fortniteService.getEpicId(username)
-      .subscribe( (res: object) => {
-        const epicId = res['data']['uid'];
-        this.router.navigateByUrl('/api/stats/' + epicId);
-      });
+    this.router.navigateByUrl('/api/stats/' + username);
   }
 
   // TODO: max age in cache, actually it uses most of the time the cached response
   loadNews() {
-    if (localStorage.getItem('EpicNews')) {
+    if (localStorage.getItem('EpicNews') && !!localStorage.getItem('EpicNewsMaxAge')) {
       this.epicNews = JSON.parse(localStorage.getItem('EpicNews'));
       console.error('Storage news', this.epicNews);
     } else {
@@ -53,6 +47,7 @@ export class HomeComponent implements OnInit {
         .subscribe(res => {
           this.epicNews = res['data'];
           localStorage.setItem('EpicNews', JSON.stringify(res['data']));
+          localStorage.setItem('EpicNewsMaxAge', Date.now().toString());
           console.error('Live news');
         });
     }

@@ -9,17 +9,19 @@ import {FortniteApiService} from '../../../services/fortnite-api/fortnite-api.se
 })
 export class StatsComponent implements OnInit {
 
-  constructor(private activatedRouter: ActivatedRoute, private fortniteService: FortniteApiService) { }
-
+  renderStats: boolean;
   username: string; wins: string; kills: string; matches: string; winrate: string; kd: string;
+
+  constructor(private activatedRouter: ActivatedRoute, private fortniteService: FortniteApiService) {}
 
   ngOnInit() {
     this.activatedRouter.params.subscribe(params => {
-      this.getUserStats(params['epicId']);
+      this.searchEpicPlayer(params['epicId']);
     });
   }
 
   searchEpicPlayer(username: string) {
+    this.renderStats = false;
     this.fortniteService.getEpicId(username)
       .subscribe( (res: object) => {
         const epicId = res['data']['uid'];
@@ -37,6 +39,7 @@ export class StatsComponent implements OnInit {
         this.matches = res['totals']['matchesplayed'];
         this.winrate = res['totals']['winrate'];
         this.kd = res['totals']['kd'];
+        this.renderStats = true;
       });
   }
 }

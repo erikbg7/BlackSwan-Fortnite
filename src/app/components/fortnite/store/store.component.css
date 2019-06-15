@@ -1,3 +1,8 @@
+.store-container {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
 .store-title {
   width: 100%;
   background: #f1ed62;
@@ -30,11 +35,12 @@ h2 {
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  background-color: #424242;
   border-radius: 5px;
   border: solid;
   padding: 10px 0 10px 0;
   height: 500px;
+  background: #424242 url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20L0 20z' fill='%239C92AC' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+
 }
 
 .box-item {
@@ -43,6 +49,7 @@ h2 {
   border-image-slice: 30;
   margin: 5px 5px 5px 5px;
   transition: .3s;
+  box-shadow: 6px 10px 5px 0 rgba(0,0,0,0.6);
 }
 
 .box-item:hover {

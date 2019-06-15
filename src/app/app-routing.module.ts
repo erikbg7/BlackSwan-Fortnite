@@ -10,6 +10,7 @@ import {TestComponent} from './components/test/test.component';
 import {AccountComponent} from './components/management/account/account.component';
 import {TComponent} from './components/fortnite/test/test.component';
 import {StatsComponent} from './components/fortnite/stats/stats.component';
+import {MyguardGuard} from './services/guard/myguard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/api/home', pathMatch: 'full' },
@@ -18,9 +19,9 @@ const routes: Routes = [
   { path: 'api/challenges', component: ChallengesComponent },
   { path: 'api/login', component: LoginComponent },
   { path: 'api/signup', component: RegisterComponent },
-  { path: 'api/manager', component: ManagerComponent },
+  { path: 'api/manager', component: ManagerComponent, canActivate: [MyguardGuard] },
   { path: 'api/test', component: TestComponent },
-  { path: 'api/myaccount', component: AccountComponent },
+  { path: 'api/myaccount', component: AccountComponent, canActivate: [MyguardGuard] },
   { path: 'api/t', component: TComponent },
   { path: 'api/stats/:epicId', component: StatsComponent }
 

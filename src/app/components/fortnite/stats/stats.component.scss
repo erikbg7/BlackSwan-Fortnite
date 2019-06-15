@@ -29,11 +29,45 @@ input {
   box-shadow: 0px 0px 177px -4px rgba(255,255,255,1);
   text-align: center;
 }
+/////////////////////////////////////// LOADER //////////////////////////////////////////////////////
+
+@-webkit-keyframes spinner { /* For Safari */
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-it {
+  -webkit-animation: spinner 1s linear infinite; /* Safari */
+  animation: spinner 1s linear infinite;
+}
+
+
+.fa-spinner {
+  font-size: 4.9em;
+  color: #077784;
+}
+.fa-circle-o-notch {
+  font-size: 4.9em;
+  color: #077784;
+}
+.fa-refresh {
+  font-size: 4.9em;
+  color: #077784;
+}
+
 
 ////////////////////////////////////// MAIN STATISTICS //////////////////////////////////////////////
 
 .statistics-container {
-  width: 800px;
+  width: 45rem;
   background-color: #424242;
   border-radius: 5px;
   border: solid;

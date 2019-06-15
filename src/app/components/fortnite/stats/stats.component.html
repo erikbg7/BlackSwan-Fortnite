@@ -3,7 +3,13 @@
   <input #searchBar class="form-control" type="text" (keyup.enter)="searchEpicPlayer(searchBar.value)" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search stats by name">
 </div>
 
-<div class="statistics-container">
+<div *ngIf="!renderStats" style="text-align: center; width: 45rem;">
+  <i class="fa fa-spinner spin-it" aria-hidden="true"></i>
+  <i class="fa fa-circle-o-notch spin-it" aria-hidden="true"></i>
+  <i class="fa fa-refresh spin-it" aria-hidden="true"></i>
+</div>
+
+<div *ngIf="renderStats" class="statistics-container" >
   <div class="statistics-username"> <h1>{{username}}</h1> </div>
   <div class="statistics-grid">
     <div class="grid-wins"><h4> Wins: </h4><span> {{wins}} </span></div>
