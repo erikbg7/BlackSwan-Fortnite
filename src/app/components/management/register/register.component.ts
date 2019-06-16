@@ -5,6 +5,7 @@ import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/
 import {Router} from '@angular/router';
 import {User} from '../../../models/user/user';
 import {passValidator} from './validator';
+import {DataService} from '../../../services/data/data.service';
 
 
 
@@ -16,12 +17,18 @@ import {passValidator} from './validator';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm: FormGroup;
+  state: any;
+  finalState: any;
 
+  registerForm: FormGroup;
   validationMessages: any;
 
-  constructor(private userService: AuthService,
-              private router: Router, private formBuilder: FormBuilder) {
+  constructor(
+    private userService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private dataService: DataService
+    ) {
 
     this.registerForm = this.formBuilder.group({
         displayName: new FormControl('', Validators.compose([
@@ -73,19 +80,28 @@ export class RegisterComponent implements OnInit {
       this.registerForm.value.password
     );
 
-
     this.userService.signup(user)
       .subscribe(
         res => {
           console.log(res);
           const token = res['token'];
           localStorage.setItem('token', token);
-          this.router.navigateByUrl('/api/manager');
+          this.hideLoginNavBarItem();
+          this.router.navigateByUrl('/api/home');
         },
         err => {
           this.registerForm.get('email').setErrors({unique: true});
+          this.handleError(err);
         });
   }
 
+  private handleError(err: HttpErrorResponse) {
+    alert(err.error['message']);
+  }
 
+  hideLoginNavBarItem(): void {
+    this.dataService.getState().subscribe( state => this.state = state);
+    this.finalState = {...this.state, login: !!localStorage.getItem('token')};
+    this.dataService.updateState(this.finalState);
+  }
 }

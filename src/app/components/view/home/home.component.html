@@ -1,6 +1,4 @@
 
-
-
 <div class="home-search-bar">
   <div class="search-player">
     <input #searchBar class="form-control" type="text" (keyup.enter)="searchEpicPlayer(searchBar.value)" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search player stats by name or EpicGames Id">
@@ -34,14 +32,14 @@
   <span *ngFor="let news of epicNews; let i = index">
     <div class="news-card" *ngIf="i <= 1 || !!toggleMoreNews">
       <div class="news-info">
-        <img src= {{news.image}} align="left" height="auto" width="35%">
+        <img class="news-image" src= {{news.image}} align="left" height="auto" width="35%">
         <h2 class="news-title"> {{news.title}} </h2>
         <h4 class="news-subtitle"> {{news.body}} </h4>
       </div>
     </div>
     <div class="news-card" style="height: 7rem; overflow: hidden;" *ngIf="i === 2 && !!!toggleMoreNews" >
       <div class="news-info" style="border-bottom: 0;">
-        <img src= {{news.image}} align="left" height="auto" width="35%">
+        <img class="news-image" src= {{news.image}} align="left" height="auto" width="35%">
         <h2 class="news-title"> {{news.title}} </h2>
       </div>
     </div>

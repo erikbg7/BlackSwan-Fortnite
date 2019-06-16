@@ -48,8 +48,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     this.hideLoginMenuItem = false;
-
-
     this.renderLoginForm = false;
     this.validationMessages = {
       email: [
@@ -84,8 +82,9 @@ export class LoginComponent implements OnInit {
           console.log(res);
           const token = res['token'];
           localStorage.setItem('token', token);
+          localStorage.setItem('account', this.loginForm.value.email);
           this.hideLoginNavBarItem();
-          this.router.navigateByUrl('/api/manager');
+          this.router.navigateByUrl('/api/home');
         },
         err => {
           console.log(err);

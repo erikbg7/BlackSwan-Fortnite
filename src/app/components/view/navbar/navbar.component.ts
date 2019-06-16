@@ -41,4 +41,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/api/home');
   }
 
+  renderManager() {
+    if (!!localStorage.getItem('account') && localStorage.getItem('account') === 'player4@gmail.com') {
+      return true;
+    } else { return false; }
+  }
+
 }

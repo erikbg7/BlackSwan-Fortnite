@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FortniteApiService} from '../../../services/fortnite-api/fortnite-api.service';
+import {stringify} from 'querystring';
 
 @Component({
   selector: 'app-stats',
@@ -33,6 +34,7 @@ export class StatsComponent implements OnInit {
     this.fortniteService.getStatistics(epicId)
       .subscribe(res => {
         console.error('stats --> ', res);
+        localStorage.setItem('stats', JSON.stringify(res));
         this.username = res['username'];
         this.wins = res['totals']['wins'];
         this.kills = res['totals']['kills'];
@@ -42,4 +44,15 @@ export class StatsComponent implements OnInit {
         this.renderStats = true;
       });
   }
+
+  getDisorder() {
+  const res = JSON.parse(localStorage.getItem('stats' ));
+  this.username = res['username'];
+  this.wins = res['totals']['wins'];
+  this.kills = res['totals']['kills'];
+  this.matches = res['totals']['matchesplayed'];
+  this.winrate = res['totals']['winrate'];
+  this.kd = res['totals']['kd'];
+  this.renderStats = true;
+}
 }

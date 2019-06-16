@@ -99,7 +99,12 @@ input {
 }
 
 h4 {
+  font-weight: 400;
+}
+
+span {
   color: #6E6B6B;
+  font-size: xx-large;
 }
 
 .grid-wins {
@@ -136,6 +141,9 @@ h4 {
   grid-row-start: 3;
   grid-column-start: 4;
   grid-column-end: 6;
+}
+.grid-title {
+  font-weight: bold;
 }
 
 ////////////////////////////////////// GAMEMODE STATISTICS //////////////////////////////////////////////
