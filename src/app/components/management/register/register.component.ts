@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth/auth.service';
+import { BSAuthService } from '../../../services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -13,7 +13,7 @@ import {DataService} from '../../../services/data/data.service';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [AuthService]
+  providers: [BSAuthService]
 })
 export class RegisterComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   validationMessages: any;
 
   constructor(
-    private userService: AuthService,
+    private userService: BSAuthService,
     private router: Router,
     private formBuilder: FormBuilder,
     private dataService: DataService

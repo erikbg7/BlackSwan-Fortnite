@@ -7,7 +7,7 @@ import { Environment } from '../environment';
   providedIn: 'root'
 })
 
-export class AuthService {
+export class BSAuthService {
 
   environment: Environment;
   selectedUser: User;

@@ -1,7 +1,6 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DataService} from '../../../services/data/data.service';
-import {AuthService} from '../../../services/auth/auth.service';
 import {LoginComponent} from '../../management/login/login.component';
 import {Subscription} from 'rxjs';
 
@@ -9,7 +8,7 @@ import {Subscription} from 'rxjs';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  providers: [AuthService, LoginComponent]
+  providers: [LoginComponent]
 
 })
 export class NavbarComponent implements OnInit {
@@ -20,7 +19,7 @@ export class NavbarComponent implements OnInit {
 
   hideLoginMenuItem: boolean;
 
-  constructor(private router: Router, private dService: AuthService, private dataService: DataService) {
+  constructor(private router: Router, private dataService: DataService) {
     this.subscription = this.dataService.getState().subscribe(state => {
       this.state = state;
       console.error('state ', this.state );

@@ -15,12 +15,40 @@ import { NavbarComponent } from './components/view/navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RegisterComponent } from './components/management/register/register.component';
 import { ManagerComponent } from './components/management/manager/manager.component';
+// social login module
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angular-6-social-login';
+
 // search module
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { TestComponent } from './components/test/test.component';
 import { AccountComponent } from './components/management/account/account.component';
 import {TComponent} from './components/fortnite/test/test.component';
 import { StatsComponent } from './components/fortnite/stats/stats.component';
+
+
+
+// Configs
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('341653766518554')
+      },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('859573338246-frqkf8vu0jelq7vsn4irapgsql29klvg.apps.googleusercontent.com')
+      }
+    ]
+  );
+  return config;
+}
+
 
 @NgModule({
   declarations: [
@@ -45,9 +73,10 @@ import { StatsComponent } from './components/fortnite/stats/stats.component';
     ReactiveFormsModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    SocialLoginModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}, {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

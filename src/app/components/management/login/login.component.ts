@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth/auth.service';
+import { BSAuthService } from '../../../services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User} from '../../../models/user/user';
 import {DataService} from '../../../services/data/data.service';
-
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular-6-social-login';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthService]
+  providers: [BSAuthService]
 })
 export class LoginComponent implements OnInit {
 
@@ -27,10 +31,11 @@ export class LoginComponent implements OnInit {
   validationMessages: any;
 
   constructor(
-    private userService: AuthService,
+    private userService: BSAuthService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private dataService: DataService
+    private dataService: DataService,
+    private socialAuthService: AuthService
     ) {
 
     this.loginForm = this.formBuilder.group({
@@ -106,5 +111,29 @@ export class LoginComponent implements OnInit {
     this.dataService.updateState(this.finalState);
   }
 
+  socialSignIn(socialPlatform: string) {
+    console.error('Social LOGIN');
+    let socialPlatformProvider;
+    if (socialPlatform === 'facebook') {
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    } else if (socialPlatform === 'google') {
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        console.log(socialPlatform + ' sign in data : ' , userData);
+        const token = userData['token'];
+        console.error('token', token);
+        if (!!token) {
+          localStorage.setItem('token', token);
+          this.hideLoginNavBarItem();
+          localStorage.setItem('account', userData['email']);
+          this.router.navigateByUrl('/api/home');
+        }
+      }
+    ).catch(err => {
+      this.handleError(err);
+    });
+  }
 
 }
